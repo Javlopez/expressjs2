@@ -1,8 +1,15 @@
 const express = require("express");
 const path = require("path");
 const fs = require("fs");
+const logger_morgan = require("morgan");
+const apiRouter = require("./routes/api_router");
+
 
 const app = express();
+
+app.use(logger_morgan("short"));
+
+app.use("/api", apiRouter);
 
 //1. logging
 app.use(function (req, res, next){
