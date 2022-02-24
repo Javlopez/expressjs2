@@ -9,6 +9,17 @@ const app = express();
 
 app.use(logger_morgan("short"));
 
+app.set("view engine", "ejs");
+app.set("views", "views");
+
+
+app.use("/", (req, res) => {
+    res.render("index", {
+        message: "Hello template...!"
+    });
+});
+
+
 app.use("/api", apiRouter);
 
 //1. logging
